@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 using MudBlazor.Services;
 using MyAppWithMud.Components;
 using MyAppWithMud.Components.BrowserTime;
+using MyAppWithMud.Web;
 
 namespace Microsoft.AspNetCore.Builder;
 
@@ -10,6 +11,8 @@ public static class HostingExtensions
 {
     public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)
     {
+        builder.Services.AddHttpLoggingInterceptor<FilterRequestLoggingInterceptor>();
+
         builder.Services.AddHttpLogging(logging =>
         {
             logging.LoggingFields = HttpLoggingFields.RequestPropertiesAndHeaders | HttpLoggingFields.ResponsePropertiesAndHeaders | HttpLoggingFields.Duration;

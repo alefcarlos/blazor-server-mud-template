@@ -38,4 +38,6 @@ app.MapRazorComponents<App>()
 
 app.MapLoginAndLogoutDefaults();
 
+app.MapDefaultEndpoints();
+
 await app.RunAsync();
