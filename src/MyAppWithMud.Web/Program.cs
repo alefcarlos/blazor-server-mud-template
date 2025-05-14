@@ -4,6 +4,7 @@ using MyAppWithMud.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
 builder.ConfigureServices();
 
 var app = builder.Build();
@@ -22,8 +23,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 }
 
-app.UseAuthentication();
-app.UseAuthorization();
+//app.UseAuthentication();
+//app.UseAuthorization();
 
 app.UseAntiforgery();
 

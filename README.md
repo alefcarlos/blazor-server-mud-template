@@ -10,4 +10,4 @@ This templates add common features to the Basic Blazor template. It ensures a pr
 - [x] Sync with browsertime
 - [x] Global error catcher
 - [ ] User Session Management
-- [ ] Aspire Integration
+- [x] Aspire Integration

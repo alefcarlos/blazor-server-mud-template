@@ -4,20 +4,28 @@
   </PropertyGroup>
   <!-- Analyzers/Builds -->
   <ItemGroup>
-    <GlobalPackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.10.48" />
+    <GlobalPackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.14.15" />
   </ItemGroup>
   <!-- Aspire -->
   <ItemGroup>
     <PackageVersion Include="Aspire.Hosting.AppHost" Version="9.2.1" />
+    <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="9.0.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.5" />
+    <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.12.0" />
+    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.12.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.12.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.12.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.12.0" />
   </ItemGroup>
   <!-- Microsoft -->
   <ItemGroup>
-    <PackageVersion Include="Microsoft.Extensions.AuditReports" Version="9.1.0" />
-    <PackageVersion Include="Microsoft.Extensions.Telemetry.Abstractions" Version="9.1.0" />
+    <PackageVersion Include="Microsoft.Extensions.AuditReports" Version="9.5.0" />
+    <PackageVersion Include="Microsoft.Extensions.Telemetry.Abstractions" Version="9.5.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="9.0.3" />
     <PackageVersion Include="Microsoft.Extensions.Localization" Version="9.0.1" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.Authorization" Version="9.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="9.5.0" />
+    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="9.2.1" />
   </ItemGroup>
   <ItemGroup>
     <PackageVersion Include="MudBlazor" Version="8.6.0" />
