@@ -21,9 +21,9 @@
   <ItemGroup>
     <PackageVersion Include="Microsoft.Extensions.AuditReports" Version="9.5.0" />
     <PackageVersion Include="Microsoft.Extensions.Telemetry.Abstractions" Version="9.5.0" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="9.0.3" />
-    <PackageVersion Include="Microsoft.Extensions.Localization" Version="9.0.1" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.Authorization" Version="9.0.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="9.0.5" />
+    <PackageVersion Include="Microsoft.Extensions.Localization" Version="9.0.5" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.Authorization" Version="9.0.5" />
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="9.5.0" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="9.2.1" />
   </ItemGroup>
