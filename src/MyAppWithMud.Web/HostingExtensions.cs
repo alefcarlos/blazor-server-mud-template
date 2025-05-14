@@ -39,7 +39,7 @@ public static class HostingExtensions
         builder.Services.AddRazorComponents()
             .AddInteractiveServerComponents();
 
-        //Para usar Auth com Oidc:
+        //Descomentar para usar auth/authz
         //builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
         //    .AddOpenIdConnect(options =>
         //    {
