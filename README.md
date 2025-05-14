@@ -4,10 +4,10 @@ This templates add common features to the Basic Blazor template. It ensures a pr
 
 ## features
 
-- Auth using OIDC
-- NotFound capability
-- Localization
-- Sync with browsertime
-- Global error catcher
-- User Session Management
-- Aspire Integration
+- [x] Auth using OIDC
+- [x] NotFound capability
+- [x] Localization
+- [x] Sync with browsertime
+- [x] Global error catcher
+- [ ] User Session Management
+- [ ] Aspire Integration
