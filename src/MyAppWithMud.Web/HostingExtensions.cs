@@ -1,13 +1,10 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.AspNetCore.HttpLogging;
+﻿using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using MudBlazor.Services;
 using MyAppWithMud.Components;
 using MyAppWithMud.Components.BrowserTime;
 using MyAppWithMud.Web;
+using MyAppWithMud.Web.SessionManagement;
 
 namespace Microsoft.AspNetCore.Builder;
 
@@ -43,35 +40,7 @@ public static class HostingExtensions
         builder.Services.AddRazorComponents()
             .AddInteractiveServerComponents();
 
-        builder.Services.AddCascadingAuthenticationState();
-
-        builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-            .AddOpenIdConnect(options =>
-            {
-                options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.ResponseType = OpenIdConnectResponseType.Code;
-                options.SaveTokens = true;
-
-                options.MapInboundClaims = false;
-                options.TokenValidationParameters.NameClaimType = "given_name";
-                options.TokenValidationParameters.RoleClaimType = "role";
-                options.SignedOutRedirectUri = "/account/signed-out";
-
-                options.AdditionalAuthorizationParameters.Add("prompt", "login");
-
-                options.Events = new OpenIdConnectEvents
-                {
-                    OnRedirectToIdentityProviderForSignOut = async (context) =>
-                    {
-                        context.ProtocolMessage.IdTokenHint = await context.HttpContext.GetTokenAsync(OpenIdConnectResponseType.IdToken);
-                    }
-                };
-            })
-            .AddCookie(options =>
-            {
-                options.AccessDeniedPath = "/account/access-denied";
-            })
-            ;
+        builder.Services.AddUserSessionManagement();
 
         builder.Services.AddHttpLogging(options =>
         {
@@ -96,6 +65,13 @@ public static class HostingExtensions
         });
 
         builder.Services.AddBrowserTimeProvider();
+
+        builder.Services.AddHttpClient("http-sample", client =>
+        {
+            client.BaseAddress = new Uri("https://dummyjson.com");
+        }).AddUserAccessTokenHandler();
+
+        builder.Services.UseMinimalHttpLogger();
 
         return builder;
     }

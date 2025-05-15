@@ -14,4 +14,4 @@ builder.AddProject<Projects.MyAppWithMud_Web>("web")
     .WaitFor(keycloak)
     ;
 
-builder.Build().Run();
+await builder.Build().RunAsync();
