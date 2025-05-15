@@ -11,10 +11,13 @@ This templates add common features to the Basic Blazor template. It ensures a pr
 - [x] Global error catcher
 - [x] User Session Management
 - [x] Aspire Integration
+    - [x] Keycloak 
 
 ## Authentication
 
-Create an user on Keycloak `local` realm and access the root page, then de Keycloak SSO page will be called, and after the login succeded the page will be redirect to the root
+> This template offers a [keycloak](http://localhost:8080) resource using Aspire and a realm import as well
+
+Start creating an user on `local` realm to [log the application in](https://localhost:7212)
 
 ## User Session Management
 
