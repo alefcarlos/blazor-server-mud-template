@@ -1,0 +1,10 @@
+﻿@page "/{*route:nonfile}"
+@inject NavigationManager Nav
+
+<MudText Typo="Typo.h4" GutterBottom="true">👀 Página não encontrada</MudText>
+<MudButton StartIcon="@Icons.Material.Filled.Home" Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => Nav.NavigateTo("/"))">Voltar para a página inicial</MudButton>
+
+@code {
+    [Parameter]
+    public string? Route { get; set; }
+}

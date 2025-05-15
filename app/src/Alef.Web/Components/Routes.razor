@@ -1,0 +1,9 @@
+﻿<Router AppAssembly="typeof(IWebMarker).Assembly" AdditionalAssemblies="[ typeof(IComponentsMarker).Assembly ]">
+    <Found Context="routeData">
+        <AuthorizeRouteView RouteData="routeData" DefaultLayout="typeof(Alef.Components.Layout.MainLayout)">
+                <NotAuthorized>
+                    <ForceLogoutAndRedirect />
+                </NotAuthorized>
+        </AuthorizeRouteView>
+    </Found>
+</Router>

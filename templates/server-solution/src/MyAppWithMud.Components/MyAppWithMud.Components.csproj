@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+    <ItemGroup>
+        <SupportedPlatform Include="browser" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Duende.AccessTokenManagement.OpenIdConnect" />
+        <PackageReference Include="MudBlazor" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" />
+        <PackageReference Include="Microsoft.Extensions.Localization" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" />
+        <PackageReference Include="TTT.AspNet.Blazor.JsonViewer" />
+    </ItemGroup>
+
+</Project>

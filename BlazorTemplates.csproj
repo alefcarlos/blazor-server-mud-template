@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageType>Template</PackageType>
+    <PackageVersion>1.0</PackageVersion>
+    <PackageId>AlefCarlos.Blazor.Templates</PackageId>
+    <Title>Alef Blazor Templates</Title>
+    <Authors>Alef Carlos</Authors>
+    <Description>A Blazor Server application using MudBlazor.</Description>
+    <PackageTags>dotnet-new;templates</PackageTags>
+    <TargetFramework>netstandard2.0</TargetFramework>
+
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>content</ContentTargetFolders>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**;templates\**\artifacts\**" />
+    <Compile Remove="**\*" />
+  </ItemGroup>
+
+</Project>

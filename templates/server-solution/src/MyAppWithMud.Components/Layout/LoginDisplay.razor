@@ -1,0 +1,19 @@
+@inject NavigationManager Nav
+
+<AuthorizeView>
+    <Authorized>
+        <MudMenu>
+            <ActivatorContent>
+                <MudAvatar Color="Color.Primary">@context.User.Identity!.Name!.First()</MudAvatar>
+            </ActivatorContent>
+            <ChildContent>
+                <form method="post" action="authentication/logout">
+                    <MudButton ButtonType="ButtonType.Submit" StartIcon="@Icons.Material.TwoTone.Login" Color="Color.Inherit">Logout</MudButton>
+                </form>
+            </ChildContent>
+        </MudMenu>
+    </Authorized>
+    <NotAuthorized>
+        <MudIconButton Icon="@Icons.Material.TwoTone.Login" Color="Color.Inherit" OnClick="@(() => Nav.NavigateTo("/authentication/login", true))" />
+    </NotAuthorized>
+</AuthorizeView>
