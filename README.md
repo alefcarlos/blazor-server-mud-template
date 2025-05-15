@@ -9,7 +9,7 @@ This templates add common features to the Basic Blazor template. It ensures a pr
 - [x] Localization
 - [x] Sync with browsertime
 - [x] Global error catcher
-- [ ] User Session Management
+- [x] User Session Management
 - [x] Aspire Integration
 
 ## Authentication
@@ -34,4 +34,8 @@ builder.Services.AddHttpClient<CatalogClient>(client =>
     client.BaseAddress = new Uri("https://apis.company.com/catalog/");
 }).AddUserAccessTokenHandler(); //<-- this one
 ```
+
+### Back-Channel Logout
+
+This template implements RemoteSignOut following the [RFC](https://openid.net/specs/openid-connect-backchannel-1_0.html)
 
