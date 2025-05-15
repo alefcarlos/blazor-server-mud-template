@@ -5,8 +5,8 @@ name: pack
 
 on:
   push:
-    branches: [ "main" ]
-
+    tags:
+      - 'v*'  # Ex: v1.0.0
 jobs:
   build:
 
@@ -18,5 +18,10 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0.x
+        
     - name: pack
-      run: dotnet pack
+      run: dotnet pack --output ./nupkg
+      
+    - name: Push to nuget
+      run: dotnet nuget push ./nupkg/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+
