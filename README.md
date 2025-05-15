@@ -1,6 +1,6 @@
 # blazor-server-template
 
-This templates add common features to the Basic Blazor template. It ensures a production-ready application
+This templates adds common features to the basic Blazor Server template. It ensures a production-ready application
 
 ## features
 
