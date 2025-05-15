@@ -5,8 +5,7 @@
 		<LangVersion>latest</LangVersion>
 		<SolutionDir Condition=" '$(SolutionDir)' == '' OR '$(SolutionDir)' == '*Undefined if not building a solution or within Visual Studio*' ">$(MSBuildThisFileDirectory)</SolutionDir>
     	<IsTestProject>$(MSBuildProjectName.EndsWith('.Tests'))</IsTestProject>
-    	<IsApiClientProject>$(MSBuildProjectName.EndsWith('.Api.Client'))</IsApiClientProject>
-		<IsApiEntrypointProject>$(MSBuildProjectName.EndsWith('.Api.Entrypoint'))</IsApiEntrypointProject>
+		<IsWebProject>$(MSBuildProjectName.EndsWith('.Web'))</IsWebProject> 
     	<IsSourceGenerator>$(MSBuildProjectName.EndsWith('.Generator'))</IsSourceGenerator>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -22,16 +21,9 @@
 		<NuGetAuditMode>all</NuGetAuditMode>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(IsApiEntrypointProject)' == 'true'">
+	<PropertyGroup Condition="'$(IsWebProject)' == 'true'">
 		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
 	</PropertyGroup>
-
-	<ItemGroup Condition="'$(IsApiEntrypointProject)' == 'true'">
-		<PackageReference Include="NSwag.MSBuild">
-		<PrivateAssets>all</PrivateAssets>
-		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-	</ItemGroup>
 	
 	<ItemGroup Condition="'$(IsSourceGenerator)' != 'true'">
 		<PackageReference Include="Microsoft.Extensions.AuditReports" />
