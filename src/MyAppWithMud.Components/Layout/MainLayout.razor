@@ -12,10 +12,21 @@
         <MudText Typo="Typo.h5" Class="ml-3">Application</MudText>
         <MudSpacer />
         <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle" />
+        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((_) => _drawerSettingsOpen=true)" />
         <LoginDisplay />
     </MudAppBar>
     <MudDrawer id="nav-drawer" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
         <NavMenu />
+    </MudDrawer>
+    <MudDrawer Open="_drawerSettingsOpen" Elevation="1" Anchor="Anchor.Right" Variant="@DrawerVariant.Temporary" OverlayAutoClose="false">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h6">Settings</MudText>
+        </MudDrawerHeader>
+        <MudText Typo="Typo.subtitle2">Language</MudText>
+        <CultureSelector />
+        <MudStack>
+            <MudButton OnClick="@((_) => _drawerSettingsOpen=false)">Close</MudButton>
+        </MudStack>
     </MudDrawer>
     <MudMainContent Class="pt-16 pa-4">
         <CustomErrorBoundary>
@@ -32,8 +43,11 @@
 </div>
 
 @code {
+
     private bool _drawerOpen = true;
     private bool _isDarkMode = true;
+
+    private bool _drawerSettingsOpen = false;
     private MudTheme? _theme = null;
 
     protected override void OnInitialized()

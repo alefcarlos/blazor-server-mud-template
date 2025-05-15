@@ -1,4 +1,5 @@
-﻿using MyAppWithMud.Components;
+﻿using Microsoft.AspNetCore.Localization;
+using MyAppWithMud.Components;
 using MyAppWithMud.Web;
 using MyAppWithMud.Web.Components;
 
@@ -37,6 +38,18 @@ app.MapRazorComponents<App>()
     ;
 
 app.MapGroup("/authentication").MapLoginAndLogoutDefaults();
+app.MapGet("/culture-set", (HttpContext context, string culture, string redirectUri) =>
+{
+    if (culture is not null)
+    {
+        context.Response.Cookies.Append(
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(
+                new RequestCulture(culture, culture)));
+    }
+
+    return Results.LocalRedirect(redirectUri);
+});
 
 app.MapDefaultEndpoints();
 
