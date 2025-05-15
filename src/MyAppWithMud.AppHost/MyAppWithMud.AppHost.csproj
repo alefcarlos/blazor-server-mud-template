@@ -1,18 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Sdk Name="Aspire.AppHost.Sdk" Version="9.2.1" />
+    <Sdk Name="Aspire.AppHost.Sdk" Version="9.2.1" />
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <UserSecretsId>334d17d8-6dde-4787-93a7-1f2f5b3d646c</UserSecretsId>
-  </PropertyGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <UserSecretsId>334d17d8-6dde-4787-93a7-1f2f5b3d646c</UserSecretsId>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting.AppHost" />
+        <PackageReference Include="Aspire.Hosting.Keycloak" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MyAppWithMud.Web\MyAppWithMud.Web.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\MyAppWithMud.Web\MyAppWithMud.Web.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="realms\" />
+    </ItemGroup>
 
 </Project>

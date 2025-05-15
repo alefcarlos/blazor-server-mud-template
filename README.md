@@ -11,3 +11,7 @@ This templates add common features to the Basic Blazor template. It ensures a pr
 - [x] Global error catcher
 - [ ] User Session Management
 - [x] Aspire Integration
+
+## Authentication
+
+Create a user on Keycloak `local` realm

@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.HttpLogging;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using MudBlazor.Services;
 using MyAppWithMud.Components;
 using MyAppWithMud.Components.BrowserTime;
@@ -39,34 +43,35 @@ public static class HostingExtensions
         builder.Services.AddRazorComponents()
             .AddInteractiveServerComponents();
 
-        //Descomentar para usar auth/authz
-        //builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-        //    .AddOpenIdConnect(options =>
-        //    {
-        //        options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        //        options.ResponseType = OpenIdConnectResponseType.Code;
-        //        options.SaveTokens = true;
+        builder.Services.AddCascadingAuthenticationState();
 
-        //        options.MapInboundClaims = false;
-        //        options.TokenValidationParameters.NameClaimType = "given_name";
-        //        options.TokenValidationParameters.RoleClaimType = "role";
-        //        options.SignedOutRedirectUri = "/account/signed-out";
+        builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+            .AddOpenIdConnect(options =>
+            {
+                options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.ResponseType = OpenIdConnectResponseType.Code;
+                options.SaveTokens = true;
 
-        //        options.AdditionalAuthorizationParameters.Add("prompt", "login");
+                options.MapInboundClaims = false;
+                options.TokenValidationParameters.NameClaimType = "given_name";
+                options.TokenValidationParameters.RoleClaimType = "role";
+                options.SignedOutRedirectUri = "/account/signed-out";
 
-        //        options.Events = new OpenIdConnectEvents
-        //        {
-        //            OnRedirectToIdentityProviderForSignOut = async (context) =>
-        //            {
-        //                context.ProtocolMessage.IdTokenHint = await context.HttpContext.GetTokenAsync(OpenIdConnectResponseType.IdToken);
-        //            }
-        //        };
-        //    })
-        //    .AddCookie(options =>
-        //    {
-        //        options.AccessDeniedPath = "/account/access-denied";
-        //    })
-        //    ;
+                options.AdditionalAuthorizationParameters.Add("prompt", "login");
+
+                options.Events = new OpenIdConnectEvents
+                {
+                    OnRedirectToIdentityProviderForSignOut = async (context) =>
+                    {
+                        context.ProtocolMessage.IdTokenHint = await context.HttpContext.GetTokenAsync(OpenIdConnectResponseType.IdToken);
+                    }
+                };
+            })
+            .AddCookie(options =>
+            {
+                options.AccessDeniedPath = "/account/access-denied";
+            })
+            ;
 
         builder.Services.AddHttpLogging(options =>
         {

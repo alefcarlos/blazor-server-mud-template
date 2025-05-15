@@ -23,9 +23,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 }
 
-//Descomentar para usar auth/authz
-//app.UseAuthentication();
-//app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseAntiforgery();
 
@@ -37,8 +36,7 @@ app.MapRazorComponents<App>()
     .AddAdditionalAssemblies(typeof(IComponentsMarker).Assembly)
     ;
 
-//Descomentar para usar auth/authz
-//app.MapLoginAndLogoutDefaults();
+app.MapGroup("/authentication").MapLoginAndLogoutDefaults();
 
 app.MapDefaultEndpoints();
 
