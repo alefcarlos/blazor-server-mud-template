@@ -11,7 +11,7 @@
     "type": "solution"
   },
   "identity": "AlefCarlos.MudBlazorServerSolution.Templates.CSharp",
-  "name": "A Blazor Server solution using MudBlazor",
+  "name": "Blazor Server solution using MudBlazor",
   "shortName": "mudblazor-server-solution",
   "sourceName": "MyAppWithMud"
 }

@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>AlefCarlos.MudBlazor.Templates</PackageId>
+    <PackageVersion>1.0</PackageVersion>
+    <Title>Alef MudBlazor Templates</Title>
+    <Authors>Alef Carlos</Authors>
+    <Description>A Blazor Server application using MudBlazor.</Description>
+    <PackageTags>dotnet-new;templates</PackageTags>
+    <PackageProjectUrl>https://github.com/alefcarlos/blazor-server-mud-template/tree/main/templates/server-solution</PackageProjectUrl>
+
+
+    <PackageType>Template</PackageType>
+    <TargetFramework>net9.0</TargetFramework>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>content</ContentTargetFolders>
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
+    <NoDefaultExcludes>true</NoDefaultExcludes>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <LocalizeTemplates>false</LocalizeTemplates>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.TemplateEngine.Tasks" Version="*" PrivateAssets="all" IsImplicitlyDefined="true"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**;templates\**\artifacts\**" />
+    <Compile Remove="**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+</Project>
