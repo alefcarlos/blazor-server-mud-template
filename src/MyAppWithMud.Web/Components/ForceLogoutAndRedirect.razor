@@ -1,0 +1,22 @@
+﻿@using Duende.AccessTokenManagement.OpenIdConnect
+@inject NavigationManager Nav
+@inject IUserAccessor UserAcessor
+@inject IUserTokenStore UserTokensStore
+
+<MudText Typo="Typo.subtitle1">Você não tem privilégios para acessar essa página.</MudText>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var user = await UserAcessor.GetCurrentUserAsync();
+        var token = await UserTokensStore.GetTokenAsync(user);
+        if (token.IsError)
+        {
+            /*Só podemos redirecionar caso seja sessão inválida,
+                pois como esse componente é utilizado tanto para
+                sessões inválidas quant o para realmente falta de permissão(role)
+            */
+            Nav.NavigateTo("/authentication/logout-invalid-session", true);
+        }
+    }
+}

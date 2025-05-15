@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Localization;
+﻿using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Options;
 using MyAppWithMud.Components;
 using MyAppWithMud.Web;
 using MyAppWithMud.Web.Components;

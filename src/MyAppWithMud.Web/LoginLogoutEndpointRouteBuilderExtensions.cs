@@ -19,6 +19,17 @@ public static class LoginLogoutEndpointRouteBuilderExtensions
         group.MapPost("/logout", () => TypedResults.SignOut(
             authenticationSchemes: [CookieAuthenticationDefaults.AuthenticationScheme, OpenIdConnectDefaults.AuthenticationScheme]));
 
+        group.MapGet("/logout-invalid-session", (HttpContext context) =>
+        {
+            if (context.User.Identity?.IsAuthenticated == true)
+            {
+                return Results.SignOut(authenticationSchemes:
+                    [CookieAuthenticationDefaults.AuthenticationScheme, OpenIdConnectDefaults.AuthenticationScheme]);
+            }
+
+            return Results.LocalRedirect("/account/signed-out-invalid-session");
+        });
+
         return group;
     }
 

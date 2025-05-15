@@ -1,0 +1,47 @@
+﻿@page "/http-client"
+@inject IHttpClientFactory HttpClientFactory
+@implements IDisposable
+@using TTT.AspNet.Blazor.JsonViewer
+
+@attribute [Authorize]
+
+<PageTitle>HttpClient</PageTitle>
+<HeadContent>
+    <link rel="stylesheet" href="@Assets["_content/TTT.AspNet.Blazor.JsonViewer/TTT/json-viewer.css"]" />
+</HeadContent>
+
+<MudText Typo="Typo.h3" GutterBottom="true">HttpClient</MudText>
+
+@if (requestResponse is null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+{
+    <MudText Typo="Typo.subtitle2">Authorization:</MudText>
+    <MudText Typo="Typo.body2">@authRequest</MudText>
+    <MudText Typo="Typo.subtitle2">Response:</MudText>
+    <JsonViewer JsonData="@requestResponse" />
+}
+
+<script src="@Assets["_content/TTT.AspNet.Blazor.JsonViewer/TTT/json-viewer.js"]"></script>
+
+@code {
+    private HttpClient _client = default!;
+    private string requestResponse = default!;
+    private string authRequest = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _client = HttpClientFactory.CreateClient("http-sample");
+
+        var response = await _client.GetAsync("/todos");
+        authRequest = response.RequestMessage!.Headers.Authorization!.ToString();
+        requestResponse = await response.Content.ReadAsStringAsync();
+    }
+
+    public void Dispose()
+    {
+        _client?.Dispose();
+    }
+}

@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MyAppWithMud.Components\MyAppWithMud.Components.csproj" />
-    <ProjectReference Include="..\MyAppWithMud.ServiceDefaults\MyAppWithMud.ServiceDefaults.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
+        <PackageReference Include="MinimalHttpLogger" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\MyAppWithMud.Components\MyAppWithMud.Components.csproj" />
+        <ProjectReference Include="..\MyAppWithMud.ServiceDefaults\MyAppWithMud.ServiceDefaults.csproj" />
+    </ItemGroup>
 </Project>
