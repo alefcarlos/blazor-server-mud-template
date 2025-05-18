@@ -23,6 +23,8 @@
 
 	<PropertyGroup Condition="'$(IsWebProject)' == 'true'">
 		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+        <!-- https://github.com/dotnet/aspnetcore/issues/58321#issuecomment-2411598004 -->
+        <JSModuleManifestRelativePath Condition="'$(JSModuleManifestRelativePath)' == ''">$(MSBuildProjectName).modules.json</JSModuleManifestRelativePath>
 	</PropertyGroup>
 	
 	<ItemGroup Condition="'$(IsSourceGenerator)' != 'true'">

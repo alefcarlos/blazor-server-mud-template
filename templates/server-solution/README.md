@@ -25,7 +25,7 @@ Start creating an user on `local` realm to [log the application in](https://loca
 
 [Duende Blazor Server Access Token Management](https://docs.duendesoftware.com/accesstokenmanagement/blazor-server/) adds User Session management for Blazor safely.
 
-> There is a in-memory store(ServerSideTokenStore.cs) for tokens, but you should user a persisted one.
+> There is a in-memory store(ServerSideTokenStore.cs) for tokens, but you should use a persisted strategy.
 
 ### Propagate token into http requests
 
