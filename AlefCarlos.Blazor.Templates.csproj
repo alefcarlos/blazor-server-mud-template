@@ -7,7 +7,7 @@
     <Authors>Alef Carlos</Authors>
     <Description>A Blazor Server application using MudBlazor.</Description>
     <PackageTags>dotnet-new;templates</PackageTags>
-    <PackageProjectUrl>https://github.com/alefcarlos/blazor-server-mud-template/tree/main/templates/server-solution</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/alefcarlos/blazor-server-mud-template</PackageProjectUrl>
 
 
     <PackageType>Template</PackageType>
