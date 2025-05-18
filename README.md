@@ -4,7 +4,6 @@
 
 ```sh
 dotnet new install AlefCarlos.Blazor.Templates
-dotnet new mudblazor-server-solution -n AppName -o ./app
 ```
 
 ## Build
@@ -13,12 +12,17 @@ To install using local directory:
 
 ```sh
 dotnet new install .\
-dotnet new mudblazor-server-solution -n AppName -o ./app
 ```
 
 ## Templates
 
 ###  mudblazor-server-solution
+
+#### Using
+
+```sh
+dotnet new mudblazor-server-solution -n AppName -o ./app
+```
 
 This templates add common features to the Basic Blazor template. It ensures a production-ready application
 
