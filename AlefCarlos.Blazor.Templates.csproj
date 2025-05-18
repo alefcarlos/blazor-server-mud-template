@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageId>AlefCarlos.MudBlazor.Templates</PackageId>
-    <PackageVersion>1.0</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <Title>Alef MudBlazor Templates</Title>
     <Authors>Alef Carlos</Authors>
     <Description>A Blazor Server application using MudBlazor.</Description>
