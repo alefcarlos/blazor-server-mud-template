@@ -4,16 +4,57 @@
     <Authorized>
         <MudMenu>
             <ActivatorContent>
-                <MudAvatar Color="Color.Primary">@context.User.Identity!.Name!.First()</MudAvatar>
+                <MudAvatar Color="Color.Primary">@initials</MudAvatar>
             </ActivatorContent>
             <ChildContent>
-                <form method="post" action="authentication/logout">
-                    <MudButton ButtonType="ButtonType.Submit" StartIcon="@Icons.Material.TwoTone.Login" Color="Color.Inherit">Logout</MudButton>
-                </form>
+                <MudPaper Style="min-width: 330px; padding: 16px;" Elevation="0">
+                    <MudStack Spacing="1">
+                        <MudText Typo="Typo.h6">@name</MudText>
+                        <MudText Typo="Typo.subtitle2">@email</MudText>
+                        <MudDivider Class="my-2" />
+                        <form method="post" action="authentication/logout">
+                            <AntiforgeryToken />
+                            <MudButton FullWidth="true"
+                                       Style="justify-content: flex-start; text-align: left;"
+                                       ButtonType="ButtonType.Submit"
+                                       Variant="Variant.Text"
+                                       Color="Color.Default">
+                                Sair
+                            </MudButton>
+                        </form>
+                    </MudStack>
+                </MudPaper>
             </ChildContent>
         </MudMenu>
     </Authorized>
     <NotAuthorized>
-        <MudIconButton Icon="@Icons.Material.TwoTone.Login" Color="Color.Inherit" OnClick="@(() => Nav.NavigateTo("/authentication/login", true))" />
+        <MudIconButton Icon="@Icons.Material.TwoTone.Login" Color="Color.Primary" OnClick="@(() => Nav.NavigateTo("/authentication/login", true))" />
     </NotAuthorized>
 </AuthorizeView>
+
+@code {
+    [CascadingParameter]
+    private Task<AuthenticationState>? AuthState { get; set; }
+
+    private string? email = "";
+    private string? name = "";
+    private string? initials = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (AuthState == null)
+        {
+            return;
+        }
+
+        var authState = await AuthState;
+        email = authState?.User?.FindFirst("email")?.Value;
+        name = authState?.User?.FindFirst("name")?.Value;
+
+        if (!string.IsNullOrEmpty(name))
+        {
+            var each = name.Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(x => x.First());
+            initials = string.Join("", each.First(), each.Last());
+        }
+    }
+}

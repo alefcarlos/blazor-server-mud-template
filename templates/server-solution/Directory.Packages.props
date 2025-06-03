@@ -32,6 +32,6 @@
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="9.2.1" />
   </ItemGroup>
   <ItemGroup>
-    <PackageVersion Include="MudBlazor" Version="8.6.0" />
+    <PackageVersion Include="MudBlazor" Version="8.7.0" />
   </ItemGroup>
 </Project>
