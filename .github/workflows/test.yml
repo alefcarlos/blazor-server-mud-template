@@ -24,4 +24,5 @@ jobs:
       - name: Test template build
         run: |
           dotnet new mudblazor-server-solution -n AppName -o ./app
+          dotnet format ./app/AppName.sln
           dotnet build ./app/AppName.sln
