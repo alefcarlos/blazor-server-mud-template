@@ -16,8 +16,12 @@ jobs:
         with:
           dotnet-version: 9.0.x
 
-      - name: Test template build
+      - name: Install local template
         run: |
           dotnet new install .\
+
+
+      - name: Test template build
+        run: |
           dotnet new mudblazor-server-solution -n AppName -o ./app
           dotnet build ./app/AppName.sln
