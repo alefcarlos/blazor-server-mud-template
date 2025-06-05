@@ -19,14 +19,8 @@ jobs:
       with:
         dotnet-version: 9.0.x
 
-    - name: Buid an example project
-      run: |
-        dotnet new install .\
-        dotnet new mudblazor-server-solution -n AppName -o ./app
-        dotnet build ./app/AppName.sln
     - name: pack
       run: dotnet pack --output ./nupkg
       
     - name: Push to nuget
       run: dotnet nuget push ./nupkg/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
-
