@@ -37,7 +37,25 @@ public class ServerSideTokenStore : IUserTokenStore
     {
         var sub = user.FindFirst("sub")?.Value ?? throw new InvalidOperationException("no sub claim");
 
-        _tokens.TryRemove(sub, out _);
+        if (_tokens.TryRemove(sub, out var token) && token != null)
+        {
+            // Zero out sensitive fields if present
+            try
+            {
+                var type = token.GetType();
+                var accessTokenProp = type.GetProperty("AccessToken");
+                var refreshTokenProp = type.GetProperty("RefreshToken");
+                var idTokenProp = type.GetProperty("IdToken");
+
+                accessTokenProp?.SetValue(token, string.Empty);
+                refreshTokenProp?.SetValue(token, string.Empty);
+                idTokenProp?.SetValue(token, string.Empty);
+            }
+            catch
+            {
+                // Ignore errors in zeroing out for safety
+            }
+        }
         return Task.CompletedTask;
     }
 }
