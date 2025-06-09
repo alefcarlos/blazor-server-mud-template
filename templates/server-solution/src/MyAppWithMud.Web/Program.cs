@@ -26,6 +26,18 @@ if (!app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 }
 
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path.Equals("/signin-oidc", StringComparison.OrdinalIgnoreCase)
+        && context.Request.Method.Equals("GET", StringComparison.OrdinalIgnoreCase))
+    {
+        context.Response.Redirect("/");
+        return;
+    }
+
+    await next();
+});
+
 app.UseAuthentication();
 app.UseAuthorization();
 
